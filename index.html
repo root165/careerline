@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2027届毕业生升学、考编、就业、国央企时间线</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --green: #1f9d73;
+      --blue: #3274d9;
+      --red: #db5a4b;
+      --yellow: #c98a12;
+      --teal: #148b9a;
+      --violet: #7a5bd8;
+      --shadow: 0 16px 40px rgba(23, 32, 51, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 42px;
+    }
+
+    header {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1.4fr .8fr;
+      align-items: end;
+      padding: 28px 0 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta {
+      justify-self: end;
+      width: min(100%, 330px);
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .meta strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #344054;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex: 0 0 auto;
+    }
+
+    .timeline-wrap {
+      margin-top: 22px;
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    .timeline {
+      min-width: 980px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 6.8%;
+      right: 6.8%;
+      top: 42px;
+      height: 4px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--green), var(--blue), var(--yellow), var(--red), var(--teal), var(--violet));
+      opacity: .72;
+    }
+
+    .month {
+      position: relative;
+      padding: 0 10px;
+      min-height: 255px;
+    }
+
+    .month-marker {
+      position: relative;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      margin: 34px auto 12px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    .month h2 {
+      margin: 0 0 12px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .events {
+      display: grid;
+      gap: 8px;
+    }
+
+    .event {
+      padding: 8px 9px;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      background: #f4f7fb;
+      font-size: 12px;
+      color: #344054;
+    }
+
+    .study { border-color: var(--green); }
+    .exam { border-color: var(--red); }
+    .state { border-color: var(--yellow); }
+    .job { border-color: var(--blue); }
+    .soe { border-color: var(--teal); }
+    .decision { border-color: var(--violet); }
+
+    .section-title {
+      margin: 34px 0 14px;
+      font-size: 24px;
+    }
+
+    .routes {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .route {
+      min-height: 100%;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--blue);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .route h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .route p {
+      margin: 9px 0;
+      color: #475467;
+      font-size: 14px;
+    }
+
+    .route b {
+      color: var(--ink);
+    }
+
+    .prep-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .panel {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .checklist {
+      margin: 0;
+      padding-left: 19px;
+      color: #475467;
+    }
+
+    .checklist li { margin: 7px 0; }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .matrix th {
+      background: #eef3f8;
+      color: #344054;
+      font-weight: 700;
+    }
+
+    .matrix tr:last-child td { border-bottom: 0; }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 5px solid var(--yellow);
+      border-radius: 6px;
+      background: #fff7e6;
+      color: #59420c;
+      font-size: 14px;
+    }
+
+    .sources {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sources a {
+      color: #2f66c9;
+      text-decoration: none;
+    }
+
+    @media (max-width: 980px) {
+      header,
+      .prep-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        justify-self: stretch;
+        width: 100%;
+      }
+
+      .routes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 20px 14px 32px; }
+      .routes { grid-template-columns: 1fr; }
+      .matrix { display: block; overflow-x: auto; }
+      .chip { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>2027届毕业生上岸路线图</h1>
+        <p class="subtitle">把升学、考公、事业编、国企央企和就业放在同一条时间线上比较：什么时候行动、适合谁、怎么准备、最后大概率通向什么结果。</p>
+      </div>
+      <aside class="meta">
+        <strong>时间基准：2026年7月12日</strong>
+        <p>多数2027届公告尚未发布，月份按近年节奏规划。具体日期以研招网、国家公务员局、各省人社厅/人事考试网、国资委央企招聘平台、企业官网为准。</p>
+      </aside>
+    </header>
+
+    <div class="legend" aria-label="路线图例">
+      <span class="chip"><span class="dot" style="background:var(--green)"></span>升学</span>
+      <span class="chip"><span class="dot" style="background:var(--red)"></span>考公/选调</span>
+      <span class="chip"><span class="dot" style="background:var(--yellow)"></span>事业编</span>
+      <span class="chip"><span class="dot" style="background:var(--teal)"></span>国企央企</span>
+      <span class="chip"><span class="dot" style="background:var(--blue)"></span>普通就业</span>
+      <span class="chip"><span class="dot" style="background:var(--violet)"></span>决策节点</span>
+    </div>
+
+    <section class="timeline-wrap" aria-label="2027届关键时间线">
+      <div class="timeline">
+        <article class="month">
+          <div class="month-marker" style="background:var(--violet)"></div>
+          <h2>2026年7-8月</h2>
+          <div class="events">
+            <div class="event decision">定“一主两备”：考研、考公、国企、就业不要平均用力。</div>
+            <div class="event study">考研暑期强化；保研夏令营、预推免材料准备。</div>
+            <div class="event job">补简历、实习、项目、作品集、证书和就业推荐材料。</div>
+          </div>
+        </article>
+
+        <article class="month">
+          <div class="month-marker" style="background:var(--green)"></div>
+          <h2>2026年9-10月</h2>
+          <div class="events">
+            <div class="event study">推免系统、考研预报名/正式报名通常集中在这一阶段。</div>
+            <div class="event soe">央企国企秋招提前批、正式批密集开放。</div>
+            <div class="event exam">国考公告和报名通常在10月前后出现。</div>
+          </div>
+        </article>
+
+        <article class="month">
+          <div class="month-marker" style="background:var(--red)"></div>
+          <h2>2026年11-12月</h2>
+          <div class="events">
+            <div class="event exam">国考笔试通常在11月底或12月初。</div>
+            <div class="event study">考研网上确认、准考证、12月初试。</div>
+            <div class="event soe">国企央企笔试、面试、测评、offer推进。</div>
+          </div>
+        </article>
+
+        <article class="month">
+          <div class="month-marker" style="background:var(--yellow)"></div>
+          <h2>2027年1-3月</h2>
+          <div class="events">
+            <div class="event exam">国考出分、面试、体检政审启动。</div>
+            <div class="event study">考研出分、国家线、复试准备。</div>
+            <div class="event state">省考、选调生、事业单位公告开始密集发布。</div>
+            <div class="event job">春招启动，适合补offer或换方向。</div>
+          </div>
+        </article>
+
+        <article class="month">
+          <div class="month-marker" style="background:var(--teal)"></div>
+          <h2>2027年3-5月</h2>
+          <div class="events">
+            <div class="event study">考研复试、调剂、拟录取。</div>
+            <div class="event state">事业编联考/单招、省考笔试面试。</div>
+            <div class="event soe">央企国企春招、补录、二批次招聘。</div>
+          </div>
+        </article>
+
+        <article class="month">
+          <div class="month-marker" style="background:var(--blue)"></div>
+          <h2>2027年6-7月</h2>
+          <div class="events">
+            <div class="event decision">毕业、档案、三方、劳动合同、户口和党团关系处理。</div>
+            <div class="event exam">编制、公务员、国企体检政审与入职手续。</div>
+            <div class="event job">未定去向者进入补录、社招或二战决策。</div>
+          </div>
+        </article>
+
+        <article class="month">
+          <div class="month-marker" style="background:var(--violet)"></div>
+          <h2>2027年8-9月</h2>
+          <div class="events">
+            <div class="event study">研究生入学。</div>
+            <div class="event soe">企业、国企央企正式入职。</div>
+            <div class="event state">公务员/事业单位试用期或聘用期开始。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <h2 class="section-title">五条路线怎么选</h2>
+    <section class="routes">
+      <article class="route" style="border-top-color:var(--green)">
+        <h3>升学：考研 / 保研 / 留学</h3>
+        <p><b>适合：</b>绩点较好、专业基础扎实、想提升学历平台，或本科专业/城市平台对就业不够友好的人。</p>
+        <p><b>准备：</b>定院校专业和考试科目；暑期强化，9-10月报名，12月初试，次年3-4月复试调剂。保研重点是绩点、科研、竞赛、英语和面试。</p>
+        <p><b>结果：</b>2027年9月入学。优势是学历门槛和平台提升；风险是延迟就业，读研后仍要重新竞争。</p>
+      </article>
+
+      <article class="route" style="border-top-color:var(--red)">
+        <h3>考公 / 选调生</h3>
+        <p><b>适合：</b>追求稳定、能接受体制内节奏、文字表达和规则意识较强的人。党员、学生干部、奖学金、基层经历有优势。</p>
+        <p><b>准备：</b>行测提速度，申论练概括和文章结构；10月前后看国考职位表，11-12月笔试，次年1-3月面试。省考和选调多在上半年。</p>
+        <p><b>结果：</b>行政编制，稳定性强。竞争激烈，岗位选择比盲目刷题更关键。</p>
+      </article>
+
+      <article class="route" style="border-top-color:var(--yellow)">
+        <h3>事业编</h3>
+        <p><b>适合：</b>想稳定但不一定非公务员的人。师范、医学、财会、计算机、中文、法学、管理类都有对应岗位。</p>
+        <p><b>准备：</b>关注省人社厅、人事考试网、学校医院官网；按岗位准备职测、综应、公基、专业课、试讲或结构化面试。</p>
+        <p><b>结果：</b>可能是事业编、备案制、员额制或合同制，公告里的编制性质和服务期必须逐字看。</p>
+      </article>
+
+      <article class="route" style="border-top-color:var(--teal)">
+        <h3>国企央企</h3>
+        <p><b>适合：</b>想兼顾稳定、平台和发展的人。电气、能源、机械、土木、通信、计算机、财会、法务、中文等专业机会较多。</p>
+        <p><b>准备：</b>8-10月冲秋招，3-5月冲春招补录；关注国资委央企招聘平台、企业官网、学校就业网。准备简历、成绩单、四六级、证书、就业推荐表。</p>
+        <p><b>结果：</b>多数是劳动合同制，不等于公务员编制。能源电力、通信、先进制造、军工、交通、金融科技更有长期空间。</p>
+      </article>
+
+      <article class="route" style="border-top-color:var(--blue)">
+        <h3>普通就业 / 民企 / 外企</h3>
+        <p><b>适合：</b>想更快积累经验、追求薪资成长、能接受市场波动的人。</p>
+        <p><b>准备：</b>7-8月打磨简历和作品集，9-11月秋招，2-4月春招。项目、实习、作品、数据结果要和岗位关键词匹配。</p>
+        <p><b>结果：</b>拿offer签三方或劳动合同。成长快、选择多，但稳定性弱于体制和国央企。</p>
+      </article>
+    </section>
+
+    <h2 class="section-title">推荐组合</h2>
+    <section class="prep-grid">
+      <div class="panel">
+        <h3>按目标组合</h3>
+        <ul class="checklist">
+          <li><b>稳妥型：</b>国企央企为主，事业编和春招为备线。</li>
+          <li><b>学历提升型：</b>考研为主，秋招和国企为备线，避免初试失败后无offer。</li>
+          <li><b>体制型：</b>国考/省考为主，事业编和国企为备线。</li>
+          <li><b>高成长型：</b>就业为主，国企或考研为备线，用实习和项目拉开差距。</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>现在就该做的事</h3>
+        <ul class="checklist">
+          <li>选定主线：未来两周内完成，不再长期摇摆。</li>
+          <li>做一份标准简历：同时适配企业、国企和实习投递。</li>
+          <li>建立公告清单：研招网、国家公务员局、省人社厅、国资委央企招聘平台、学校就业网。</li>
+          <li>每周复盘：投递数、笔试正确率、面试反馈、学习进度都要量化。</li>
+        </ul>
+      </div>
+    </section>
+
+    <h2 class="section-title">路线对比表</h2>
+    <section class="panel">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>路线</th>
+            <th>核心窗口</th>
+            <th>最大优势</th>
+            <th>主要风险</th>
+            <th>最该盯的指标</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>升学</td>
+            <td>2026年7月-2027年4月</td>
+            <td>学历和平台提升</td>
+            <td>延迟就业，复试/调剂不确定</td>
+            <td>目标院校匹配度、初试分数、复试材料</td>
+          </tr>
+          <tr>
+            <td>考公/选调</td>
+            <td>2026年10月-2027年5月</td>
+            <td>行政编制和稳定性</td>
+            <td>岗位竞争大，容错率低</td>
+            <td>职位表限制条件、行测速度、申论稳定分</td>
+          </tr>
+          <tr>
+            <td>事业编</td>
+            <td>2027年1月-6月</td>
+            <td>稳定岗位多，地区选择广</td>
+            <td>编制性质差异大</td>
+            <td>公告性质、专业匹配、笔面试比例</td>
+          </tr>
+          <tr>
+            <td>国企央企</td>
+            <td>2026年8月-12月，2027年3月-5月</td>
+            <td>平台稳定，行业资源强</td>
+            <td>不同子公司差异大</td>
+            <td>企业层级、岗位城市、培养机制、薪酬结构</td>
+          </tr>
+          <tr>
+            <td>普通就业</td>
+            <td>2026年9月-11月，2027年2月-4月</td>
+            <td>选择多、成长快</td>
+            <td>市场波动和淘汰压力</td>
+            <td>实习项目、作品集、岗位匹配度、面试转化率</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">结论：2027届最现实的策略不是“全都试”，而是“一主两备”。主线吃掉70%的时间，备线各占15%，这样既有冲刺，也有兜底。</div>
+    </section>
+
+    <footer class="sources">
+      参考入口：
+      <a href="https://yz.chsi.com.cn/" target="_blank" rel="noreferrer">研招网</a> ·
+      <a href="https://bm.scs.gov.cn/" target="_blank" rel="noreferrer">国家公务员局考试录用专题</a> ·
+      <a href="https://job.sasac.gov.cn/" target="_blank" rel="noreferrer">国务院国资委央企招聘平台</a> ·
+      各省人社厅/人事考试网 · 学校就业信息网
+    </footer>
+  </main>
+</body>
+</html>
